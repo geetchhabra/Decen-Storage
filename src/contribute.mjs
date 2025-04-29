@@ -832,10 +832,10 @@ async function contributeStorage(storageSizeGB) {
   try {
     const storageSizeInBytes = convertGBToBytes(storageSizeGB);
 
-    // ✅ Step 1: Create a unique garbage folder/file
+    // Step 1: Create a unique garbage folder/file
     await createGarbageFolder(storageBasePath, storageSizeGB);
 
-    // ✅ Step 2: Interact with the smart contract to contribute storage
+    // Step 2: Interact with the smart contract to contribute storage
     const tx = await contract.contributeStorage(storageSizeInBytes);  // Pass bytes instead of GB
     console.log('Transaction hash:', tx.hash);
     await tx.wait();
@@ -874,14 +874,14 @@ async function findMaxStorageContributor(contributors) {
   let selectedContributor = null;
 
   for (const contributor of contributors) {
-    // ✅ Pass the contributor's address instead of the wallet address
+    // Pass the contributor's address instead of the wallet address
     const availableStorage = await fetchAvailableStorage(contract, contributor);
 
-    // ✅ Convert BigInt to GB for logging
+    // Convert BigInt to GB for logging
     const availableStorageInGB = Number(availableStorage) / GB_TO_BYTES;
     console.log(`Contributor ${contributor} has ${availableStorageInGB.toFixed(2)} GB available.`);
 
-    // ✅ Keep the comparison in BigInt
+    // Keep the comparison in BigInt
     if (availableStorage > maxStorage) {
       maxStorage = availableStorage;
       selectedContributor = contributor;
