@@ -8,11 +8,10 @@ import { createDecipheriv } from 'crypto';
 // Initialize IPFS (ensure you have the right IPFS instance setup)
 const ipfs = create({ url: 'http://127.0.0.1:5001/api/v0' });
 // Contract details
-const contractAddress = "0x780460b50301fEA5756173790558A174a2c4232E";
+const contractAddress = "Deployed Contract Address";
 const provider = new ethers.JsonRpcProvider("http://127.0.0.1:7545");
-//const wallet = new ethers.Wallet("98d0341abb1dcb0e7d0ae33e2e2f152a30a4d338157f6af64488bb7c0852c2c7", provider);
-//const wallet = new ethers.Wallet("0xa92c8e3cead1e1080275c42723cb8c32b27233f87a14a2c30e72f0759b73d99c", provider);
-const wallet = new ethers.Wallet("0x6f82adc9086e8dda6b73fe828d345c87de456dec56f18b23c59f366c1d4d6bc0", provider);
+
+const wallet = new ethers.Wallet("Wallet Address", provider);
 
 
 // Smart contract ABI and address
@@ -871,6 +870,6 @@ async function retrieveAndDecryptFile(ipfsHash) {
   }
 }
 
-// Example usage
-const userAddress = '0xCa820EAfFaBdDEc4Cd30ff3391A69a01F415685c';  // Replace with the actual user address
+
+const userAddress = 'User Address';  
 getFileDetailsInTable(userAddress);
