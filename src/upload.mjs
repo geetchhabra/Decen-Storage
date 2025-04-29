@@ -1,6 +1,6 @@
 import path from 'path';
 import { ethers } from 'ethers';
-import fs from 'fs'; // Assuming fs module is used to read file
+import fs from 'fs'; 
 import { create } from 'ipfs-http-client';
 import crypto from 'crypto';
 
@@ -13,11 +13,10 @@ const __dirname = path.dirname(__filename);
 const ipfs = create({ url: 'http://127.0.0.1:5001/api/v0' });
 import { CID } from 'multiformats/cid';
 // Contract details
-const contractAddress = "0x780460b50301fEA5756173790558A174a2c4232E";
+const contractAddress = "Contract Address";
 const provider = new ethers.JsonRpcProvider("http://127.0.0.1:7545");
-//const wallet = new ethers.Wallet("98d0341abb1dcb0e7d0ae33e2e2f152a30a4d338157f6af64488bb7c0852c2c7", provider);
-//const wallet = new ethers.Wallet("0xa92c8e3cead1e1080275c42723cb8c32b27233f87a14a2c30e72f0759b73d99c", provider);
-const wallet = new ethers.Wallet("0x6f82adc9086e8dda6b73fe828d345c87de456dec56f18b23c59f366c1d4d6bc0", provider);
+
+const wallet = new ethers.Wallet("Wallet Address", provider);
 import { createGarbageFolder, deleteGarbageFolder} from './garbageFolder.mjs';
 
 
@@ -963,21 +962,21 @@ async function Uploadmain() {
       // Encrypt the file before uploading
       const encryptedFilePath = encryptFile(testFilePath, encryptionKey);
       console.log('Encrypting file...');
-      console.log(`✅ File encrypted successfully and saved as: ${encryptedFilePath}`);
+      console.log(`File encrypted successfully and saved as: ${encryptedFilePath}`);
 
       // Upload the encrypted file to IPFS
       console.log('Uploading file to IPFS...');
       const ipfsHash = await uploadFile(encryptedFilePath, selectedContributor, basePath);
-      console.log(`✅ File uploaded successfully to IPFS!`);
+      console.log(`File uploaded successfully to IPFS!`);
       console.log(`IPFS Hash: ${ipfsHash}`);
 
       // Pin the file locally
       console.log("Pinning file locally on Contributor's device...");
       await pinFileLocally(ipfsHash);
-      console.log(`✅ File pinned successfully!`);
+      console.log(` File pinned successfully!`);
       console.log(`Pinned IPFS Hash: ${ipfsHash}`);
 
-      console.log('🎉 **File successfully uploaded, stored, and pinned!**');
+      console.log(' **File successfully uploaded, stored, and pinned!**');
     } else {
       console.log('No contributor found with sufficient storage.');
     }
