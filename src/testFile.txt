@@ -1,0 +1,22 @@
+
+Key Changes and Explanations:
+ABI Import:
+
+javascript
+Copy code
+import contractABI from './StoragePlatformABI.json' assert { type: "json" };
+Ensure this matches the path and structure of your StoragePlatformABI.json file in the src directory.
+
+ABI Structure: If the StoragePlatformABI.json contains additional metadata (e.g., contractName, networks), only use the abi field when initializing the contract:
+
+javascript
+Copy code
+const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+Private Key Security: Never expose your private key in production. Use environment variables or a secure secrets manager to store sensitive information.
+
+Execution Path: Ensure testFile.txt exists at the specified path or adjust the path in:
+
+javascript
+Copy code
+const filePath = path.resolve('./testFile.txt');
+Deployment Address: Double-check the contract address (0x36C49eD13dfF1040d56ed4E98084275F6d319274) to ensure it matches the address from your Truffle deployment.
